@@ -1,0 +1,52 @@
+﻿@*
+copyright (c) 2022 Roberto Ceccarelli - Casasoft
+http://strawberryfield.altervista.org
+
+This file is part of Casasoft Contemporary Carte de Visite Web
+https://github.com/strawberryfield/CCDV_Web
+
+Casasoft CCDV Web is free software:
+you can redistribute it and/or modify it
+under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+Casasoft CCDV Web is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+See the GNU General Public License for more details.
+
+You should have received a copy of the GNU AGPL v.3
+along with Casasoft CCDV Web.
+If not, see <http://www.gnu.org/licenses/>.
+*@
+@page
+@using Casasoft.CCDV_Web.Components
+@model Casasoft.CCDV_Web.Pages.MontaggioFotoModel
+@{
+    ViewData["Title"] = "Montaggio Foto";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-3 bg-lightgray h-100">
+            <div class="container-fluid">
+                <form method="post" enctype="multipart/form-data">
+                    <div class="row vspace">
+                        <div class="col">
+                            <label>
+                                Files da caricare
+                                <input type="file" asp-for="Upload" multiple />
+                            </label>
+                        </div>
+                    </div>
+                    <component id="BaseOptions" name="BaseOptions" type="typeof(CommonOptions)" render-mode="Static" />
+
+                </form>
+            </div>
+        </div>
+        <div class="col">
+            <img id="Preview" class="img-fluid" src="~/results/result.jpg" />
+        </div>
+    </div>
+</div>

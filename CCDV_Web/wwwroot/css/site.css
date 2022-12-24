@@ -1,0 +1,27 @@
+html {
+  font-size: 12px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 20px;
+}
+
+.bg-lightgray {
+    background: #e2f0f0;
+}
+
+.vspace {
+    margin-bottom: 7px;
+    margin-top: 7px;
+}

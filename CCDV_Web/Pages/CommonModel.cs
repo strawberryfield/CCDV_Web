@@ -61,7 +61,7 @@ public class CommonModel : PageModel
     protected IParameters? par;
     protected IEngine? engine;
     public string ImgBase64;
-
+    
     protected virtual async Task ReadData()
     {
         if (par is null) return;
@@ -101,4 +101,5 @@ public class CommonModel : PageModel
         byte[] arr = img.ToByteArray(MagickFormat.Jpeg);
         return Convert.ToBase64String(arr);
     }
+
 }

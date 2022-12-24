@@ -28,36 +28,60 @@ If not, see <http://www.gnu.org/licenses/>.
     ViewData["Title"] = "Montaggio Foto";
 }
 
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-3 bg-lightgray h-100">
-            <div class="container-fluid">
-                <form method="post" enctype="multipart/form-data">
-                    <div class="row vspace">
-                        <div class="col">
-                            <label class="form-label">
-                                Files da caricare
-                                <input type="file" asp-for="Upload" multiple class="form-control"/>
-                            </label>
-                        </div>
+<div class="row flex-grow-1">
+    <div class="col-3 bg-lightgray">
+        <div class="container-fluid d-flex flex-column">
+            <form method="post" enctype="multipart/form-data">
+                <div class="row vspace">
+                    <div class="col">
+                        <label class="form-label">
+                            Files da caricare
+                            <input type="file" asp-for="Upload" multiple class="form-control" />
+                        </label>
                     </div>
-                    <component type="typeof(CheckBox)" param-Id="@("FullSize")" param-Label="@("Full Size")" render-mode="Static" />
-                    <component type="typeof(CheckBox)" param-Id="@("Trim")" param-Label="@("Trim")" render-mode="Static" />
-                    <component type="typeof(CheckBox)" param-Id="@("Borders")" param-Label="@("Con bordi")" render-mode="Static" />
-                    <div class="row">
-                        <div class="col">
-                            <label class="form-label">
-                                Border size
-                                <input type="number" id="Border" name="Border" value="3" class="form-control" />
-                            </label>
-                        </div>
+                </div>
+                <component type="typeof(CheckBox)" param-Id="@("FullSize")" param-Label="@("Full Size")" render-mode="Static" />
+                <component type="typeof(CheckBox)" param-Id="@("Trim")" param-Label="@("Trim")" render-mode="Static" />
+                <component type="typeof(CheckBox)" param-Id="@("Borders")" param-Label="@("Con bordi")" render-mode="Static" />
+                <div class="row">
+                    <div class="col">
+                        <label class="form-label">
+                            Border size
+                            <input type="number" id="Border" name="Border" value="3" class="form-control" />
+                        </label>
                     </div>
-                    <component type="typeof(CommonOptions)" render-mode="Static" />
-                </form>
-            </div>
+                </div>
+                <component type="typeof(CommonOptions)" render-mode="Static" />
+            </form>
         </div>
-        <div class="col">
-            <img id="Preview" class="img-fluid" src="data:image/jpeg;base64,@Model.ImgBase64" />
+    </div>
+    <div class="col">
+        <div class="container-fluid d-flex flex-column">
+            <div class="row">
+                <div class="col bg-lightgray">
+                    <button onclick="downloadImage();">
+                        Scarica l'elaborazione'
+                    </button>
+                </div>
+            </div>
+            <div class="row flex-grow-1">
+                <div class="col">
+                    <img id="Preview" class="img-fluid d-block m-auto" src="data:image/jpeg;base64,@Model.ImgBase64" />
+                </div>
+            </div>
         </div>
     </div>
 </div>
+
+@section Scripts {
+    <script type="text/javascript">
+        var downloadImage = function () {
+            var textToSave = $("#Preview").attr('src').substring(23);
+            var hiddenElement = document.createElement('a');
+            hiddenElement.href = 'data:attachment/jpeg;base64,' + textToSave;
+            hiddenElement.target = '_blank';
+            hiddenElement.download = 'result.jpg';
+            hiddenElement.click();
+        };
+    </script>
+}

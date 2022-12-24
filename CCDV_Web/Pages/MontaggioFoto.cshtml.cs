@@ -46,7 +46,9 @@ public class MontaggioFotoModel : CommonModel
     {
         await ReadData();
         if(!string.IsNullOrWhiteSpace(FillColor))
-            DoWork();   
+        {
+            ImgBase64 = DoWork();
+        }
     }
 
     protected override async Task ReadData()
@@ -60,10 +62,10 @@ public class MontaggioFotoModel : CommonModel
         p.Padding = Border;
     }
 
-    protected override void DoWork()
+    protected override string DoWork()
     {
         engine = new MontaggioFotoEngine();
-        base.DoWork();
+        return base.DoWork();
     }
 
 }

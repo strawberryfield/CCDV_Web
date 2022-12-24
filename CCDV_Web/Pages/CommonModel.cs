@@ -60,6 +60,7 @@ public class CommonModel : PageModel
 
     protected IParameters? par;
     protected IEngine? engine;
+    public string ImgBase64;
 
     protected virtual async Task ReadData()
     {
@@ -83,9 +84,10 @@ public class CommonModel : PageModel
         }
     }
 
-    protected virtual void DoWork()
+    protected virtual string DoWork()
     {
-        if (par is null || engine is null) return;
+        if (par is null || engine is null) 
+            return string.Empty;
 
         string output = Path.Combine(_environment.WebRootPath, "results\\result.jpg");
         if (System.IO.File.Exists(output))
@@ -95,6 +97,8 @@ public class CommonModel : PageModel
         engine.SetJsonParams(JsonSerializer.Serialize(par));
 
         MagickImage img = engine.GetResult(true);
-        img.Write(Path.Combine(_environment.WebRootPath, "results\\result.jpg"));
+        //img.Write(Path.Combine(_environment.WebRootPath, "results\\result.jpg"));
+        byte[] arr = img.ToByteArray(MagickFormat.Jpeg);
+        return Convert.ToBase64String(arr);
     }
 }

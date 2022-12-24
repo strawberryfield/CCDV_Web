@@ -53,7 +53,11 @@ public class CommonModel : PageModel
     public int DPI { get; set; }
     [BindProperty]
     public List<IFormFile>? Upload { get; set; }
- 
+    [BindProperty]
+    public IFormFile UploadScript { get; set; }
+    [BindProperty]
+    public string? Tag { get; set; }
+
     protected IParameters? par;
     protected IEngine? engine;
 
@@ -64,6 +68,7 @@ public class CommonModel : PageModel
         par.Dpi = DPI;
         par.BorderColor = BorderColor;
         par.FillColor = FillColor;
+        par.Tag= Tag;
         if (Upload is not null)
         {
             foreach (var file in Upload)

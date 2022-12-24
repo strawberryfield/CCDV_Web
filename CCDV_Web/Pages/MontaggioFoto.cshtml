@@ -21,6 +21,7 @@ along with Casasoft CCDV Web.
 If not, see <http://www.gnu.org/licenses/>.
 *@
 @page
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @using Casasoft.CCDV_Web.Components
 @model Casasoft.CCDV_Web.Pages.MontaggioFotoModel
 @{
@@ -34,14 +35,24 @@ If not, see <http://www.gnu.org/licenses/>.
                 <form method="post" enctype="multipart/form-data">
                     <div class="row vspace">
                         <div class="col">
-                            <label>
+                            <label class="form-label">
                                 Files da caricare
-                                <input type="file" asp-for="Upload" multiple />
+                                <input type="file" asp-for="Upload" multiple class="form-control"/>
                             </label>
                         </div>
                     </div>
-                    <component id="BaseOptions" name="BaseOptions" type="typeof(CommonOptions)" render-mode="Static" />
-
+                    <component type="typeof(CheckBox)" param-Id="@("FullSize")" param-Label="@("Full Size")" render-mode="Static" />
+                    <component type="typeof(CheckBox)" param-Id="@("Trim")" param-Label="@("Trim")" render-mode="Static" />
+                    <component type="typeof(CheckBox)" param-Id="@("Borders")" param-Label="@("Con bordi")" render-mode="Static" />
+                    <div class="row">
+                        <div class="col">
+                            <label class="form-label">
+                                Border size
+                                <input type="number" id="Border" name="Border" value="3" class="form-control" />
+                            </label>
+                        </div>
+                    </div>
+                    <component type="typeof(CommonOptions)" render-mode="Static" />
                 </form>
             </div>
         </div>

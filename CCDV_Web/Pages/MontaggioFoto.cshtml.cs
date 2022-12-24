@@ -33,6 +33,14 @@ public class MontaggioFotoModel : CommonModel
     {
     }
 
+    [BindProperty]
+    public bool FullSize { get; set; }
+    [BindProperty]
+    public bool Trim { get; set; }
+    [BindProperty]
+    public bool Borders { get; set; }
+    [BindProperty]
+    public int Border { get; set; }
 
     public async Task OnPostAsync()
     {
@@ -45,6 +53,11 @@ public class MontaggioFotoModel : CommonModel
     {
         par = new MontaggioFotoParameters();
         await base.ReadData();
+        MontaggioFotoParameters p = (MontaggioFotoParameters)par;
+        p.FullSize = FullSize;
+        p.Trim = Trim;
+        p.WithBorder = Borders;
+        p.Padding = Border;
     }
 
     protected override void DoWork()

@@ -21,31 +21,45 @@ along with Casasoft CCDV Web.
 If not, see <http://www.gnu.org/licenses/>.
 *@
 
-<div class="row vspace">
+<div class="row">
+    <div class="col-6">
+        <label class="form-label">Fill color
+            <input type="color" id="FillColor" name="FillColor" value="@FillColor" class="form-control" />
+        </label>
+    </div>
     <div class="col">
-        <label>
-            <input type="color" id="FillColor" name="FillColor" value="@FillColor" />&nbsp;Fill color
+        <label class="form-label">Border color
+            <input type="color" id="BorderColor" name="BorderColor" value="@BorderColor" class="form-control" />
+            </label>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <label class="form-label">DPI
+            <input type="number" id="DPI" name="DPI" value="@DPI" class="form-control" />
         </label>
     </div>
 </div>
-<div class="row vspace">
+<div class="row">
     <div class="col">
-        <label>
-            <input type="color" id="BorderColor" name="BorderColor" value="@BorderColor" />&nbsp;Border color
+        <label class="form-label">
+            Script file
+            <input type="file" id="UploadScript" name="UploadScript" class="form-control" />
         </label>
     </div>
 </div>
-<div class="row vspace">
+<div class="row">
     <div class="col">
-        <label>
-            <input type="number" id="DPI" name="DPI" value="@DPI" />&nbsp;DPI
+        <label class="form-label">
+            Tag
+            <input type="text" id="Tag" name="Tag" class="form-control" />
         </label>
     </div>
 </div>
 
 <div class="row vspace">
     <div class="col">
-        <input type="submit" />
+        <input type="submit" class="form-control" />
     </div>
 </div>
 

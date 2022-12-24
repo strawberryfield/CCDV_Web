@@ -3,6 +3,9 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+# Temporary directories
+CCDV_Web/wwwroot/results/*.*
+
 # User-specific files
 *.rsuser
 *.suo

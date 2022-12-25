@@ -29,17 +29,10 @@ If not, see <http://www.gnu.org/licenses/>.
 }
 
 <div class="row flex-grow-1">
-    <div class="col-3 bg-lightgray">
+    <div class="col-md-3 bg-lightgray">
         <div class="container-fluid d-flex flex-column">
             <form method="post" enctype="multipart/form-data">
-                <div class="row vspace">
-                    <div class="col">
-                        <label class="form-label">
-                            Files da caricare
-                            <input type="file" asp-for="Upload" multiple class="form-control" />
-                        </label>
-                    </div>
-                </div>
+                <component type="typeof(UploadMultiFiles)" render-mode="Static" />
                 <component type="typeof(CheckBox)" param-Id="@("FullSize")" param-Label="@("Full Size")" render-mode="Static" />
                 <component type="typeof(CheckBox)" param-Id="@("Trim")" param-Label="@("Trim")" render-mode="Static" />
                 <component type="typeof(CheckBox)" param-Id="@("Borders")" param-Label="@("Con bordi")" render-mode="Static" />

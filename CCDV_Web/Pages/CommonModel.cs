@@ -43,6 +43,11 @@ public class CommonModel : PageModel
         _environment = environment;
         _configuration = configuration;
         TempPath = _configuration["CCDV_Web:TempPath"];
+
+        FillColor = "#ffffff";
+        BorderColor = "#000000";
+        DPI = 300;
+        Tag = "";
     }
 
     [BindProperty]

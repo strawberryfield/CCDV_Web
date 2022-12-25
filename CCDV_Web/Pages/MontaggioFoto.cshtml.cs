@@ -32,6 +32,7 @@ public class MontaggioFotoModel : CommonModel
     public MontaggioFotoModel(IWebHostEnvironment environment, IConfiguration configuration)
         : base(environment, configuration)
     {
+        Border = 0;
     }
 
     [BindProperty]

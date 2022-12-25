@@ -33,18 +33,23 @@ If not, see <http://www.gnu.org/licenses/>.
         <div class="container-fluid d-flex flex-column">
             <form method="post" enctype="multipart/form-data">
                 <component type="typeof(UploadMultiFiles)" render-mode="Static" />
-                <component type="typeof(CheckBox)" param-Id="@("FullSize")" param-Label="@("Full Size")" render-mode="Static" />
-                <component type="typeof(CheckBox)" param-Id="@("Trim")" param-Label="@("Trim")" render-mode="Static" />
-                <component type="typeof(CheckBox)" param-Id="@("Borders")" param-Label="@("Con bordi")" render-mode="Static" />
+                <component type="typeof(CheckBox)" render-mode="Static" param-Id="@("FullSize")"
+                           param-Label="@("Full Size")" param-isChecked="@Model.FullSize" />
+                <component type="typeof(CheckBox)" render-mode="Static" param-Id="@("Trim")"
+                           param-Label="@("Trim")" param-isChecked="@Model.Trim" />
+                <component type="typeof(CheckBox)" render-mode="Static" param-Id="@("Borders")"
+                           param-Label="@("Con bordi")" param-isChecked="@Model.Borders" />
                 <div class="row">
                     <div class="col">
                         <label class="form-label">
                             Border size
-                            <input type="number" id="Border" name="Border" value="3" class="form-control" />
+                            <input type="number" id="Border" name="Border" value="@Model.Border" class="form-control" />
                         </label>
                     </div>
                 </div>
-                <component type="typeof(CommonOptions)" render-mode="Static" />
+                <component type="typeof(CommonOptions)" render-mode="Static"
+                           param-FillColor="@Model.FillColor" param-BorderColor="@Model.BorderColor"
+                           param-DPI="@Model.DPI" param-Tag="@Model.Tag" />
             </form>
         </div>
     </div>

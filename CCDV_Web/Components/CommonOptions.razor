@@ -52,7 +52,7 @@ If not, see <http://www.gnu.org/licenses/>.
     <div class="col">
         <label class="form-label">
             Tag
-            <input type="text" id="Tag" name="Tag" class="form-control" />
+            <input type="text" id="Tag" name="Tag" value="@Tag" class="form-control" />
         </label>
     </div>
 </div>
@@ -65,9 +65,12 @@ If not, see <http://www.gnu.org/licenses/>.
 
 @code {
     [Parameter]
-    public string FillColor { get; set; } = "#ffffff";
+    public string FillColor { get; set; }
     [Parameter]
-    public string BorderColor { get; set; } = "#000000";
+    public string BorderColor { get; set; }
     [Parameter] 
-    public int DPI { get; set; } = 300;
+    public int DPI { get; set; }
+    [Parameter]
+    public string Tag { get; set; } 
+
 }

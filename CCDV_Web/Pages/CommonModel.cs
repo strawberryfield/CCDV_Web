@@ -61,7 +61,7 @@ public class CommonModel : PageModel
     protected IParameters? par;
     protected IEngine? engine;
     public string ImgBase64;
-    
+
     protected virtual async Task ReadData()
     {
         if (par is null) return;
@@ -69,7 +69,7 @@ public class CommonModel : PageModel
         par.Dpi = DPI;
         par.BorderColor = BorderColor;
         par.FillColor = FillColor;
-        par.Tag= Tag;
+        par.Tag = Tag;
         if (Upload is not null)
         {
             foreach (var file in Upload)
@@ -86,18 +86,10 @@ public class CommonModel : PageModel
 
     protected virtual string DoWork()
     {
-        if (par is null || engine is null) 
+        if (engine is null)
             return string.Empty;
 
-        string output = Path.Combine(_environment.WebRootPath, "results\\result.jpg");
-        if (System.IO.File.Exists(output))
-        {
-            System.IO.File.Delete(output);
-        }
-        engine.SetJsonParams(JsonSerializer.Serialize(par));
-
         MagickImage img = engine.GetResult(true);
-        //img.Write(Path.Combine(_environment.WebRootPath, "results\\result.jpg"));
         byte[] arr = img.ToByteArray(MagickFormat.Jpeg);
         return Convert.ToBase64String(arr);
     }

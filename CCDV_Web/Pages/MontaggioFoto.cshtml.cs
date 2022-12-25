@@ -22,6 +22,7 @@
 using Casasoft.CCDV.Engines;
 using Casasoft.CCDV.JSON;
 using Microsoft.AspNetCore.Mvc;
+using System.Text.Json;
 
 namespace Casasoft.CCDV_Web.Pages;
 
@@ -45,7 +46,7 @@ public class MontaggioFotoModel : CommonModel
     public async Task OnPostAsync()
     {
         await ReadData();
-        if(!string.IsNullOrWhiteSpace(FillColor))
+        if (!string.IsNullOrWhiteSpace(FillColor))
         {
             ImgBase64 = DoWork();
         }
@@ -64,7 +65,12 @@ public class MontaggioFotoModel : CommonModel
 
     protected override string DoWork()
     {
-        engine = new MontaggioFotoEngine();
+        if (par is null)
+            return string.Empty;
+
+        MontaggioFotoEngine eng = new();
+        engine = eng;
+        eng.SetJsonParams(JsonSerializer.Serialize(par));
         return base.DoWork();
     }
 

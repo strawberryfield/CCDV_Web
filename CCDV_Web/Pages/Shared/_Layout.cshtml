@@ -1,4 +1,27 @@
-﻿<!DOCTYPE html>
+﻿@*
+copyright (c) 2022 Roberto Ceccarelli - Casasoft
+http://strawberryfield.altervista.org
+
+This file is part of Casasoft Contemporary Carte de Visite Web
+https://github.com/strawberryfield/CCDV_Web
+
+Casasoft CCDV Web is free software:
+you can redistribute it and/or modify it
+under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+Casasoft CCDV Web is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+See the GNU General Public License for more details.
+
+You should have received a copy of the GNU AGPL v.3
+along with Casasoft CCDV Web.
+If not, see <http://www.gnu.org/licenses/>.
+*@
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -71,5 +94,16 @@
     <script src="_framework/blazor.server.js"></script>
 
     @await RenderSectionAsync("Scripts", required: false)
+
+    <script type="text/javascript">
+        var downloadImage = function () {
+            var textToSave = $("#Preview").attr('src').substring(23);
+            var hiddenElement = document.createElement('a');
+            hiddenElement.href = 'data:attachment/jpeg;base64,' + textToSave;
+            hiddenElement.target = '_blank';
+            hiddenElement.download = 'result.jpg';
+            hiddenElement.click();
+        };
+    </script>
 </body>
 </html>

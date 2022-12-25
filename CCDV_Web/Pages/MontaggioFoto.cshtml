@@ -55,33 +55,6 @@ If not, see <http://www.gnu.org/licenses/>.
             </form>
         </div>
     </div>
-    <div class="col">
-        <div class="container-fluid d-flex flex-column">
-            <div class="row">
-                <div class="col bg-lightgray">
-                    <button onclick="downloadImage();">
-                        Scarica l'elaborazione'
-                    </button>
-                </div>
-            </div>
-            <div class="row flex-grow-1">
-                <div class="col">
-                    <img id="Preview" class="img-fluid d-block m-auto" src="data:image/jpeg;base64,@Model.ImgBase64" />
-                </div>
-            </div>
-        </div>
-    </div>
+    <component type="typeof(ImageViewer)" render-mode="Static" param-ImgBase64="@Model.ImgBase64" />
 </div>
 
-@section Scripts {
-    <script type="text/javascript">
-        var downloadImage = function () {
-            var textToSave = $("#Preview").attr('src').substring(23);
-            var hiddenElement = document.createElement('a');
-            hiddenElement.href = 'data:attachment/jpeg;base64,' + textToSave;
-            hiddenElement.target = '_blank';
-            hiddenElement.download = 'result.jpg';
-            hiddenElement.click();
-        };
-    </script>
-}

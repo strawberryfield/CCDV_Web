@@ -70,7 +70,8 @@ public class MontaggioFotoModel : CommonModel
 
         MontaggioFotoEngine eng = new();
         engine = eng;
-        eng.SetJsonParams(JsonSerializer.Serialize(par));
+        MontaggioFotoParameters p = (MontaggioFotoParameters)par;
+        eng.SetJsonParams(JsonSerializer.Serialize(p));
         return base.DoWork();
     }
 

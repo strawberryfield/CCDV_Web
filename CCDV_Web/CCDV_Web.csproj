@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -10,13 +10,9 @@
   <ItemGroup>
     <PackageReference Include="Casasoft.CCDV.Common" Version="22.12.18" />
   </ItemGroup>
-	
-	<ItemGroup>
-		<Content Update="wwwroot\results\**\*.*" CopyToPublishDirectory="Never" />
-	</ItemGroup>
-	
-	<ItemGroup>
-	  <Folder Include="wwwroot\results\" />
-	</ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\images\" />
+  </ItemGroup>
 
 </Project>

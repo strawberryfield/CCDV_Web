@@ -24,7 +24,6 @@ using Casasoft.CCDV.JSON;
 using ImageMagick;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using System.Text.Json;
 
 namespace Casasoft.CCDV_Web.Pages;
 
@@ -48,6 +47,9 @@ public class CommonModel : PageModel
         BorderColor = "#000000";
         DPI = 300;
         Tag = "";
+
+        MagickImage logo = new(Path.Combine(_environment.WebRootPath, "images/CCDV.jpg"));
+        ImgBase64 = logo.ToBase64(MagickFormat.Jpeg);
     }
 
     [BindProperty]

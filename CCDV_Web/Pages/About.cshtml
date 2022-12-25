@@ -25,9 +25,19 @@ If not, see <http://www.gnu.org/licenses/>.
 @{
     ViewData["Title"] = "Casasoft Contemporary Carte de Visite Web Tools";
 }
-<h1>@ViewData["Title"]</h1>
 
-<div class="form-group">
-<label for="licenza">Licenza</label>
-<textarea class="form-control" id="licenza">@Model.License</textarea>
+<div class="row">
+    <div class="col-md-3">
+        <img src="~/images/CCDV-128.jpg" />
+    </div>
+    <div class="col-md">
+        <h1>@ViewData["Title"]</h1>
+        <p>copyright &copy; 2022 Roberto Ceccarelli - Casasoft</p>
+    </div>
+</div>
+<div class="row vspace">
+    <div class="form-group">
+        <label for="licenza">Licenza</label>
+        <textarea class="form-control" id="licenza" readonly>@Model.License</textarea>
+    </div>
 </div>

@@ -34,7 +34,7 @@ If not, see <http://www.gnu.org/licenses/>.
             <div class="container-fluid ">
                 <component type="typeof(UploadMultiFiles)" render-mode="Static" />
                 <component type="typeof(PaperFormat)" render-mode="Static"
-                           param-Id="@("PaperFormat")" value="@Model.PaperFormat" />
+                           param-Id="@("PaperFormat")" param-Format="@Model.PaperFormat" />
                 <component type="typeof(CommonOptions)" render-mode="Static"
                            param-FillColor="@Model.FillColor" param-BorderColor="@Model.BorderColor"
                            param-DPI="@Model.DPI" param-Tag="@Model.Tag" />

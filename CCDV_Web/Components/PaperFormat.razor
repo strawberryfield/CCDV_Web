@@ -1,0 +1,16 @@
+﻿<div class="row">
+    <div class="col">
+        <select class="form-select" id="@Id" name="@Id" value="@Format">
+            <option selected value="Medium">Medium (15x20)</option>
+            <option value="Large">Large (20x27)</option>
+            <option value="A4">A4 (21x29.7)</option>
+        </select>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public string Id { get; set; }
+    [Parameter]
+    public string Format { get; set; }
+}

@@ -22,12 +22,8 @@ If not, see <http://www.gnu.org/licenses/>.
 *@
 <div class="row">
     <div class="col">
-        <label for="@Id">Output format</label>
-        <select class="form-select" id="@Id" name="@Id" value="@Format">
-            <option value="Medium">Medium (15x20)</option>
-            <option value="Large">Large (20x27)</option>
-            <option value="A4">A4 (21x29.7)</option>
-        </select>
+        <label for="@Id">@Label</label>
+        <input type="file" id="@Id" name="@Id" class="form-control" />
     </div>
 </div>
 
@@ -35,5 +31,5 @@ If not, see <http://www.gnu.org/licenses/>.
     [Parameter]
     public string Id { get; set; }
     [Parameter]
-    public string Format { get; set; }
+    public string Label { get; set; }
 }

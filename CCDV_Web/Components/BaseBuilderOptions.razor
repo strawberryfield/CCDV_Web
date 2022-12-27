@@ -20,20 +20,19 @@ You should have received a copy of the GNU AGPL v.3
 along with Casasoft CCDV Web.
 If not, see <http://www.gnu.org/licenses/>.
 *@
-<div class="row">
-    <div class="col">
-        <label for="@Id">Output format</label>
-        <select class="form-select" id="@Id" name="@Id" value="@Format">
-            <option value="Medium">Medium (15x20)</option>
-            <option value="Large">Large (20x27)</option>
-            <option value="A4">A4 (21x29.7)</option>
-        </select>
-    </div>
-</div>
+<UploadSingleFile Id="FrontImage" Label="Front image" />
+<UploadSingleFile Id="BackImage" Label="Back image" />
+<UploadSingleFile Id="LeftImage" Label="Left image" />
+<UploadSingleFile Id="RightImage" Label="Right image" />
+<UploadSingleFile Id="TopImage" Label="Top image" />
+<UploadSingleFile Id="BottomImage" Label="Bottom image" />
+<CheckBox Id="UseTestImages" Label="Use test images" isChecked="@UseTestImages" />
+<PaperFormat Id="PaperFormat" Format="@PaperFormat" />
 
 @code {
     [Parameter]
-    public string Id { get; set; }
+    public bool UseTestImages { get; set; }
     [Parameter]
-    public string Format { get; set; }
+    public string PaperFormat { get; set; }
+
 }

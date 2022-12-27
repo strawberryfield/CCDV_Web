@@ -36,6 +36,19 @@ public class BaseBuilderModel : CommonModel
     }
 
     [BindProperty]
+    public IFormFile FrontImage { get; set; }
+    [BindProperty]
+    public IFormFile BackImage { get; set; }
+    [BindProperty]
+    public IFormFile LeftImage { get; set; }
+    [BindProperty]
+    public IFormFile RightImage { get; set; }
+    [BindProperty]
+    public IFormFile TopImage { get; set; }
+    [BindProperty]
+    public IFormFile BottomImage { get; set; }
+
+    [BindProperty]
     public bool UseTestImages { get; set; }
     [BindProperty]
     public string PaperFormat { get; set; }
@@ -46,17 +59,13 @@ public class BaseBuilderModel : CommonModel
         par = p;
         await base.ReadData();
         p.PaperFormat = Utils.GetPaperFormat(PaperFormat, PaperFormats.Medium);
+        p.frontImage = LoadFile(FrontImage);
+        p.backImage = LoadFile(BackImage);
+        p.leftImage = LoadFile(LeftImage);
+        p.rightImage = LoadFile(RightImage);
+        p.topImage = LoadFile(TopImage);
+        p.bottomImage = LoadFile(BottomImage);
+        p.useTestImages = UseTestImages;
     }
 
-    protected override string DoWork()
-    {
-        if (par is null)
-            return string.Empty;
-
-        BaseBuilderEngine eng = new();
-        engine = eng;
-        BaseBuilderParameters p = (BaseBuilderParameters)par;
-        eng.SetJsonParams(JsonSerializer.Serialize(p));
-        return base.DoWork();
-    }
 }

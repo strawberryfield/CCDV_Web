@@ -19,6 +19,7 @@
 // along with Casasoft CCDV Web.  
 // If not, see <http://www.gnu.org/licenses/>.
 
+using Casasoft.CCDV.Engines;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Casasoft.CCDV_Web.Pages;
@@ -38,5 +39,16 @@ public class ScatolaModel : BaseBuilderModel
         {
             ImgBase64 = DoWork();
         }
+    }
+
+    protected override string DoWork()
+    {
+        if (par is null)
+            return string.Empty;
+
+        ScatolaEngine eng = new();
+        engine = eng;
+        eng.SetJsonParams(par);
+        return base.DoWork();
     }
 }

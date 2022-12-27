@@ -19,7 +19,10 @@
 // along with Casasoft CCDV Web.  
 // If not, see <http://www.gnu.org/licenses/>.
 
+using Casasoft.CCDV.Engines;
+using Casasoft.CCDV.JSON;
 using Microsoft.AspNetCore.Mvc;
+using System.Text.Json;
 
 namespace Casasoft.CCDV_Web.Pages;
 
@@ -40,4 +43,14 @@ public class CartellaModel : BaseBuilderModel
         }
     }
 
+    protected override string DoWork()
+    {
+        if (par is null)
+            return string.Empty;
+
+        FolderEngine eng = new();
+        engine = eng;
+        eng.SetJsonParams((BaseBuilderParameters)par);
+        return base.DoWork();
+    }
 }

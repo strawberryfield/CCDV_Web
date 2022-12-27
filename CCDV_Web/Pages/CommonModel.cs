@@ -91,6 +91,18 @@ public class CommonModel : PageModel
         }
     }
 
+    protected string LoadFile(IFormFile file)
+    {
+        if (file is null) return string.Empty;
+
+        string filename = Path.Combine(TempPath, file.FileName);
+        using (var fileStream = new FileStream(filename, FileMode.Create))
+        {
+            file.CopyTo(fileStream);
+        }  
+        return filename;    
+    }
+
     protected virtual string DoWork()
     {
         if (engine is null)

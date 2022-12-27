@@ -63,8 +63,7 @@ public class MontaggioDorsiModel : CommonModel
 
         MontaggioDorsiEngine eng = new();
         engine = eng;
-        MontaggioDorsiParameters p = (MontaggioDorsiParameters)par;
-        eng.SetJsonParams(JsonSerializer.Serialize(p));
+        eng.SetJsonParams((MontaggioDorsiParameters)par);
         return base.DoWork();
     }
 

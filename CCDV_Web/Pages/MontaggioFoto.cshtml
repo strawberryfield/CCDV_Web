@@ -28,10 +28,10 @@ If not, see <http://www.gnu.org/licenses/>.
     ViewData["Title"] = "Montaggio Foto";
 }
 
-<div class="row flex-grow-1">
+<div class="row g-2 flex-grow-1">
     <div class="col-md-3 bg-lightgray">
-        <div class="container-fluid d-flex flex-column">
-            <form method="post" enctype="multipart/form-data">
+        <form method="post" enctype="multipart/form-data">
+            <div class="container-fluid ">
                 <component type="typeof(UploadMultiFiles)" render-mode="Static" />
                 <component type="typeof(CheckBox)" render-mode="Static" param-Id="@("FullSize")"
                            param-Label="@("Full Size")" param-isChecked="@Model.FullSize" />
@@ -41,17 +41,15 @@ If not, see <http://www.gnu.org/licenses/>.
                            param-Label="@("Con bordi")" param-isChecked="@Model.Borders" />
                 <div class="row">
                     <div class="col">
-                        <label class="form-label">
-                            Border size
-                            <input type="number" id="Border" name="Border" value="@Model.Border" class="form-control" />
-                        </label>
+                        <label for="Border">Border size</label>
+                        <input type="number" id="Border" name="Border" value="@Model.Border" class="form-control" />
                     </div>
                 </div>
                 <component type="typeof(CommonOptions)" render-mode="Static"
                            param-FillColor="@Model.FillColor" param-BorderColor="@Model.BorderColor"
                            param-DPI="@Model.DPI" param-Tag="@Model.Tag" />
-            </form>
-        </div>
+            </div>
+        </form>
     </div>
     <component type="typeof(ImageViewer)" render-mode="Static" param-ImgBase64="@Model.ImgBase64" />
 </div>

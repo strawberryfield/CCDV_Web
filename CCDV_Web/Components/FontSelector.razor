@@ -20,19 +20,33 @@ You should have received a copy of the GNU AGPL v.3
 along with Casasoft CCDV Web.
 If not, see <http://www.gnu.org/licenses/>.
 *@
-
 <div class="row">
     <div class="col">
-        <InnerCheckBox Id="@Id" Label="@Label" isChecked="@isChecked" />
+        <label for="FontFace">Font</label>
+        <select name="FontFace" id="Fontface" class="form-select">
+            @foreach(var item in ImageMagick.MagickNET.FontFamilies)
+            {
+                <option value="@item" selected="@(item == Value)">@item</option>
+            }
+        </select>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <InnerCheckBox Id="FontBold" Label="Bold" isChecked="@Bold" />
+    </div>
+    <div class="col-md-6">
+        <InnerCheckBox Id="FontItalic" Label="Italic" isChecked="@Italic" />
     </div>
 </div>
 
 
 @code {
     [Parameter]
-    public string Id { get; set; }
+    public string Value { get; set; }
     [Parameter]
-    public string Label { get; set; }
+    public bool Bold { get; set; }
     [Parameter]
-    public bool isChecked { get; set; }
+    public bool Italic { get; set; }
+
 }

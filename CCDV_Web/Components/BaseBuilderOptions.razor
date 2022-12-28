@@ -61,6 +61,7 @@ If not, see <http://www.gnu.org/licenses/>.
         <input type="text" class="form-control" id="BorderText" name="BorderText" value="@BorderText" />
     </div>
 </div>
+<FontSelector Value="@FontFace" Bold="@FontBold" Italic="@FontItalic" />
 <PaperFormat Id="PaperFormat" Format="@PaperFormat" />
 
 @code {
@@ -76,5 +77,10 @@ If not, see <http://www.gnu.org/licenses/>.
     public string TargetFormat { get; set; }
     [Parameter]
     public string isHorizontal { get; set; }
-
+    [Parameter]
+    public string FontFace { get; set; }
+    [Parameter]
+    public bool FontBold { get; set; }
+    [Parameter]
+    public bool FontItalic { get; set; }
 }

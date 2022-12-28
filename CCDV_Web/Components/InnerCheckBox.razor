@@ -21,11 +21,15 @@ along with Casasoft CCDV Web.
 If not, see <http://www.gnu.org/licenses/>.
 *@
 
-<div class="row">
-    <div class="col">
-        <InnerCheckBox Id="@Id" Label="@Label" isChecked="@isChecked" />
-    </div>
+<div class="form-check">
+    <!-- This is the crazy way Microsoft uses the html checkbox -->
+    <input class="form-check-input" type="checkbox" data-val="true" value="true" id="@Id" name="@Id" checked="@isChecked">
+    <label class="form-check-label" for="@Id">
+        @Label
+    </label>
+    <input name="@Id" type="hidden" value="false">
 </div>
+
 
 
 @code {

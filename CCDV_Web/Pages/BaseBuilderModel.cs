@@ -22,9 +22,8 @@
 using Casasoft.CCDV;
 using Casasoft.CCDV.Engines;
 using Casasoft.CCDV.JSON;
-using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Mvc;
-using System.Text.Json;
+
 namespace Casasoft.CCDV_Web.Pages;
 
 public class BaseBuilderModel : CommonModel
@@ -37,6 +36,7 @@ public class BaseBuilderModel : CommonModel
         isHorizontal = "Vertical";
         TargetFormat = "CDV";
         BorderText = "";
+        FontFace = "Arial";
     }
 
     [BindProperty]
@@ -64,6 +64,12 @@ public class BaseBuilderModel : CommonModel
     public string TargetFormat { get; set; }
     [BindProperty]
     public string isHorizontal { get; set; }
+    [BindProperty]
+    public string FontFace { get; set; }
+    [BindProperty]
+    public bool FontBold { get; set; }
+    [BindProperty]
+    public bool FontItalic { get; set; }
 
     protected override async Task ReadData()
     {

@@ -33,6 +33,10 @@ public class BaseBuilderModel : CommonModel
        : base(environment, configuration)
     {
         PaperFormat = "Medium";
+        Thickness = 5;
+        isHorizontal = "Vertical";
+        TargetFormat = "CDV";
+        BorderText = "";
     }
 
     [BindProperty]
@@ -52,6 +56,14 @@ public class BaseBuilderModel : CommonModel
     public bool UseTestImages { get; set; }
     [BindProperty]
     public string PaperFormat { get; set; }
+    [BindProperty]
+    public int Thickness { get; set; }
+    [BindProperty]
+    public string BorderText { get; set; }
+    [BindProperty]
+    public string TargetFormat { get; set; }
+    [BindProperty]
+    public string isHorizontal { get; set; }
 
     protected override async Task ReadData()
     {
@@ -66,6 +78,41 @@ public class BaseBuilderModel : CommonModel
         p.topImage = LoadFile(TopImage);
         p.bottomImage = LoadFile(BottomImage);
         p.useTestImages = UseTestImages;
+        p.spessore = Thickness;
+        p.borderText = BorderText;
+        p.targetFormat = TargetFormat == "CDV" ? 0 : 1;
+        p.isHorizontal = isHorizontal == "Horizontal";
+    }
+
+    protected void setBuilderParameters()
+    {
+        if (engine is null || par is null)
+            return;
+
+        // Builders need to pass parameters directly
+        BaseBuilderEngine eng = (BaseBuilderEngine)engine;
+        BaseBuilder builder = (BaseBuilder)eng.Builder;
+        BaseBuilderParameters p = (BaseBuilderParameters)par;
+        builder.fillColor = GetColor(p.FillColor);
+        builder.borderColor = GetColor(p.BorderColor);
+        builder.fmt = eng.fmt;
+        builder.borderText = p.borderText;
+        builder.font = p.font;
+        builder.fontBold = p.fontBold;
+        builder.fontItalic = p.fontItalic;
+        builder.isHorizontal = p.isHorizontal;
+        builder.targetType = (TargetType)p.targetFormat;
+        builder.PaperFormat = p.PaperFormat;
+        builder.Thickness = p.spessore;
+
+        builder.makeEmptyImages();
+        if (p.useTestImages) builder.CreateTestImages();
+        builder.SetFrontImage(p.frontImage);
+        builder.SetBackImage(p.backImage);
+        builder.SetTopImage(p.topImage);
+        builder.SetBottomImage(p.bottomImage);
+        builder.SetLeftImage(p.leftImage);
+        builder.SetRightImage(p.rightImage);
     }
 
 }

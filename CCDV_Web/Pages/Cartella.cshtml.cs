@@ -22,7 +22,6 @@
 using Casasoft.CCDV.Engines;
 using Casasoft.CCDV.JSON;
 using Microsoft.AspNetCore.Mvc;
-using System.Text.Json;
 
 namespace Casasoft.CCDV_Web.Pages;
 
@@ -51,6 +50,7 @@ public class CartellaModel : BaseBuilderModel
         FolderEngine eng = new();
         engine = eng;
         eng.SetJsonParams((BaseBuilderParameters)par);
+        setBuilderParameters();
         return base.DoWork();
     }
 }

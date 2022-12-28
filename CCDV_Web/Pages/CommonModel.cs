@@ -19,11 +19,14 @@
 // along with Casasoft CCDV Web.  
 // If not, see <http://www.gnu.org/licenses/>.
 
+using Casasoft.CCDV;
 using Casasoft.CCDV.Engines;
 using Casasoft.CCDV.JSON;
+using Casasoft.CCDV_Web.Components;
 using ImageMagick;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Xml.Linq;
 
 namespace Casasoft.CCDV_Web.Pages;
 
@@ -112,5 +115,27 @@ public class CommonModel : PageModel
         byte[] arr = img.ToByteArray(MagickFormat.Jpeg);
         return Convert.ToBase64String(arr);
     }
+
+    /// <summary>
+    /// Gets the color by a string
+    /// </summary>
+    /// <param name="color">name or components values</param>
+    /// <returns><see cref="MagickColor"/></returns>
+    protected MagickColor GetColor(string color)
+    {
+        Colors colors = new();
+
+        MagickColor ret = MagickColors.Transparent;
+        if (!string.IsNullOrWhiteSpace(color))
+        {
+            MagickColor r = colors.GetColor(color);
+            if (r is not null)
+            {
+                ret = r;
+            }
+        }
+        return ret;
+    }
+
 
 }

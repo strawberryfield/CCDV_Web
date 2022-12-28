@@ -27,6 +27,40 @@ If not, see <http://www.gnu.org/licenses/>.
 <UploadSingleFile Id="TopImage" Label="Top image" />
 <UploadSingleFile Id="BottomImage" Label="Bottom image" />
 <CheckBox Id="UseTestImages" Label="Use test images" isChecked="@UseTestImages" />
+<div class="row">
+    <div class="col-md-6">
+        <input type="radio" name="TargetFormat" id="CDV" value="CDV" checked="@(TargetFormat == "CDV")" />
+        <label for="CDV">Carte de Visite</label>
+    </div>
+    <div class="col-md">
+        <input type="radio" name="TargetFormat" id="CC" value="CC" checked="@(TargetFormat == "CC")" />
+        <label for="CC">Credit card</label>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <input type="radio" name="isHorizontal" id="Vertical" value="Vertical" checked="@(isHorizontal == "Vertical")" />
+        <label for="Vertical">Vertical</label>
+    </div>
+    <div class="col-md-6">
+        <input type="radio" name="isHorizontal" id="Horizontal" value="Horizontal" checked="@(isHorizontal == "Horizontal")" />
+        <label for="Horizontal">Horizontal</label>
+    </div>
+</div>
+<div class="row vspace">
+    <div class="col-md-4">
+        <input type="number" id="Thickness" name="Thickness" value="@Thickness" class="form-control" />
+    </div>
+    <div class="col-md">
+        <label for="Thickness" class="label-control">mm Thick</label>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <label for="BorderText">Border text</label>
+        <input type="text" class="form-control" id="BorderText" name="BorderText" value="@BorderText" />
+    </div>
+</div>
 <PaperFormat Id="PaperFormat" Format="@PaperFormat" />
 
 @code {
@@ -34,5 +68,13 @@ If not, see <http://www.gnu.org/licenses/>.
     public bool UseTestImages { get; set; }
     [Parameter]
     public string PaperFormat { get; set; }
+    [Parameter]
+    public int Thickness { get; set; }
+    [Parameter]
+    public string BorderText { get; set; }
+    [Parameter]
+    public string TargetFormat { get; set; }
+    [Parameter]
+    public string isHorizontal { get; set; }
 
 }

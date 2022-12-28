@@ -20,6 +20,7 @@
 // If not, see <http://www.gnu.org/licenses/>.
 
 using Casasoft.CCDV.Engines;
+using Casasoft.CCDV.JSON;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Casasoft.CCDV_Web.Pages;
@@ -48,7 +49,8 @@ public class ScatolaModel : BaseBuilderModel
 
         ScatolaEngine eng = new();
         engine = eng;
-        eng.SetJsonParams(par);
+        eng.SetJsonParams((BaseBuilderParameters)par);
+        setBuilderParameters();
         return base.DoWork();
     }
 }

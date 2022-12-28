@@ -33,7 +33,9 @@ If not, see <http://www.gnu.org/licenses/>.
         <form method="post" enctype="multipart/form-data">
             <div class="container-fluid ">
                 <component type="typeof(BaseBuilderOptions)" render-mode="Static"
-                           param-UseTestImages="@Model.UseTestImages" param-PaperFormat="@Model.PaperFormat" />
+                           param-UseTestImages="@Model.UseTestImages" param-PaperFormat="@Model.PaperFormat"
+                           param-TargetFormat="@Model.TargetFormat" param-isHorizontal="@Model.isHorizontal"
+                           param-Thickness="@Model.Thickness" param-BorderText="@Model.BorderText" />
                 <component type="typeof(CommonOptions)" render-mode="Static"
                            param-FillColor="@Model.FillColor" param-BorderColor="@Model.BorderColor"
                            param-DPI="@Model.DPI" param-Tag="@Model.Tag" />
